@@ -31,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(Uri.parse("tel:3534438929"));
 
-                //if(intent.resolveActivity(getPackageManager()) != null) {
+                if(intent.resolveActivity(getPackageManager()) != null) {
                     if(ContextCompat.checkSelfPermission(getApplicationContext(), CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
                         startActivity(intent);
                     }
-                //}
+                }
             }
         });
 
@@ -45,9 +45,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel:3534438929"));
 
-                //if(intent.resolveActivity(getPackageManager()) != null) {
+                if(intent.resolveActivity(getPackageManager()) != null) {
                     startActivity(intent);
-                //}
+                }
             }
         });
     }
