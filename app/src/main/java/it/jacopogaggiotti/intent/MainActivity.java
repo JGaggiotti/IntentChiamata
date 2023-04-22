@@ -12,11 +12,14 @@ import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-
+    final String[] permissions = {CALL_PHONE};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), CALL_PHONE) == PackageManager.PERMISSION_DENIED) {
+            requestPermissions(permissions, 0);
+        }
     }
 
     @Override
@@ -34,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
                 if(intent.resolveActivity(getPackageManager()) != null) {
                     if(ContextCompat.checkSelfPermission(getApplicationContext(), CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
                         startActivity(intent);
+                    } else {
+                        requestPermissions(permissions,1);
                     }
                 }
             }
