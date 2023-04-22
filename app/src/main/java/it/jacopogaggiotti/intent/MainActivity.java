@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
+                Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(Uri.parse("tel:3534438929"));
 
                 if(intent.resolveActivity(getPackageManager()) != null) {
@@ -36,7 +36,12 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:3534438929"));
 
+                //if(intent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(intent);
+                //}
             }
         });
     }
