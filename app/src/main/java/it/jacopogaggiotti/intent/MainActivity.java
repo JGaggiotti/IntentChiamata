@@ -1,8 +1,12 @@
 package it.jacopogaggiotti.intent;
 
+import static android.Manifest.permission.CALL_PHONE;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -27,9 +31,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(Uri.parse("tel:3534438929"));
 
-                if(intent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(intent);
-                }
+                //if(intent.resolveActivity(getPackageManager()) != null) {
+                    if(ContextCompat.checkSelfPermission(getApplicationContext(), CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+                        startActivity(intent);
+                    }
+                //}
             }
         });
 
